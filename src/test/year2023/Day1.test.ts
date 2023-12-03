@@ -67,27 +67,23 @@ class Day1 extends Task {
 test('Part 1 example', () => {
   const day = new Day1()
   const input = day.getExample(1)
-  const output = day.part1(input)
-  expect(output).toBe(142)
+  expect(day.part1(input)).toBe(142)
 })
 
 test('Part 1 task', () => {
   const day = new Day1()
   const input = day.getTask()
-  const output = day.part1(input)
-  expect(output).toBe(54951)
+  expect(day.part1(input)).toBe(54951)
 })
 
 test('Part 2 example', () => {
   const day = new Day1()
   const input = day.getExample(2)
-  const output = day.part2(input)
-  expect(output).toBe(281)
+  expect(day.part2(input)).toBe(281)
 })
 
 test('Part 2 task', () => {
   const day = new Day1()
   const input = day.getTask()
-  const output = day.part2(input)
-  expect(output).toBe(55218)
+  expect(day.part2(input)).toBe(55218)
 })
