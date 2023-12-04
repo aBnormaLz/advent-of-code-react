@@ -83,6 +83,10 @@ class Day1 extends Task {
   }
 
   part2(input: string[]) {
+    return input
+      .map(i => this.parseGameTry2(i))
+      .map(g => g.calculatePower())
+      .sum()
   }
 }
 
@@ -100,14 +104,14 @@ test('Part 1 task', () => {
   expect(day.part1Try2(input)).toBe(2369)
 })
 
-// test('Part 2 example', () => {
-//   const day = new Day1()
-//   const input = day.getExample()
-//   expect(day.part2(input)).toBe(2286)
-// })
-//
-// test('Part 2 task', () => {
-//   const day = new Day1()
-//   const input = day.getTask()
-//   expect(day.part2(input)).toBe(66363)
-// })
+test('Part 2 example', () => {
+  const day = new Day1()
+  const input = day.getExample()
+  expect(day.part2(input)).toBe(2286)
+})
+
+test('Part 2 task', () => {
+  const day = new Day1()
+  const input = day.getTask()
+  expect(day.part2(input)).toBe(66363)
+})

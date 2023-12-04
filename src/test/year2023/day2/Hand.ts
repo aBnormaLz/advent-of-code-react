@@ -14,4 +14,8 @@ export class Hand {
       })
       .reduce((acc, curr) => acc && curr, true)
   }
+
+  calculateMinNumberOfCubes() {
+    return new NumberAndColor(4, "red")
+  }
 }

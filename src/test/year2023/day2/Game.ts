@@ -1,4 +1,5 @@
 import { Hand } from './Hand'
+import { max } from 'lodash'
 
 export class Game {
   id: number
@@ -14,4 +15,21 @@ export class Game {
       .map(draw => draw.isValid(maxCubes))
       .reduce((acc, curr) => acc && curr, true)
   }
+
+  calculatePower() {
+    const combined = {
+      'red': 0,
+      'green': 0,
+      'blue': 0,
+    }
+
+    for (const draw of this.draws) {
+      draw.hands.forEach(hand => {
+        combined[hand.color] = max([hand.number, combined[hand.color]])
+      })
+    }
+
+    return Object.values(combined).product()
+  }
 }
+
