@@ -1,5 +1,4 @@
 import { readFileSync } from 'fs'
-import '../../util/string.extensions'
 
 export class Task {
   day: number

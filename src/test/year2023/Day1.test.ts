@@ -1,5 +1,5 @@
 import { Task } from '../util/Task'
-import '../../util/array.extensions'
+import * as _ from 'lodash'
 
 class Day1 extends Task {
   constructor() {
@@ -7,10 +7,11 @@ class Day1 extends Task {
   }
 
   part1(input: string[]) {
-    return input
+    return _.chain(input)
       .map(l => l.match(/\d/g))
-      .map(l => +(l.head() + l.last()))
+      .map(l => +(_.head(l) + _.last(l)))
       .sum()
+      .value()
   }
 
   part2(input: string[]) {
@@ -36,16 +37,16 @@ class Day1 extends Task {
     }
 
     function extractFirstDigit(line: string) {
-      return extract(line, (actual, key) => actual.startsWith(key), s => s.tail())
+      return extract(line, (actual, key) => actual.startsWith(key), s => s.substring(1))
     }
 
     function extractLastDigit(line: string) {
-      return extract(line, (actual, key) => actual.endsWith(key), s => s.init())
+      return extract(line, (actual, key) => actual.endsWith(key), s => s.slice(0, -1))
     }
 
     function extract(line: string, prediction: (actual: string, key: string) => boolean, modifier: (s: string) => string) {
       let actual = line
-      while (actual.nonEmpty()) {
+      while (actual) {
         for (const [key, value] of Object.entries(replacements)) {
           if (prediction(actual, key)) {
             return value
@@ -58,9 +59,10 @@ class Day1 extends Task {
       throw new Error(`No digit found in '${line}'`)
     }
 
-    return input
+    return _.chain(input)
       .map(l => +(extractFirstDigit(l) + extractLastDigit(l)))
       .sum()
+      .value()
   }
 }
 

@@ -1,5 +1,5 @@
 import { Hand } from './Hand'
-import { max } from 'lodash'
+import * as _ from 'lodash'
 
 export class Game {
   id: number
@@ -25,11 +25,11 @@ export class Game {
 
     for (const draw of this.draws) {
       draw.hands.forEach(hand => {
-        combined[hand.color] = max([hand.number, combined[hand.color]])
+        combined[hand.color] = _.max([hand.number, combined[hand.color]])
       })
     }
 
-    return Object.values(combined).product()
+    return Object.values(combined).reduce((acc, curr) => acc * curr)
   }
 }
 

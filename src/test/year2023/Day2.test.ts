@@ -1,8 +1,8 @@
 import { Task } from '../util/Task'
-import '../../util/array.extensions'
 import { Hand } from './day2/Hand'
 import { NumberAndColor } from './day2/NumberAndColor'
 import { Game } from './day2/Game'
+import * as _ from 'lodash'
 
 class Day1 extends Task {
   constructor() {
@@ -12,20 +12,21 @@ class Day1 extends Task {
   parseGame(line: string) {
     const split = line.split(': ')
 
-    const id = +split.head().split(' ')[1]
-    const draws = split.last().split('; ').map(draw => {
+    const id = +_.chain(split).head().split(' ').last().value()
+    const draws = _.chain(split).last().split('; ').map(draw => {
       return draw.split(', ').map(numberAndColor => {
         return {
           number: +numberAndColor.split(' ')[0],
           color: numberAndColor.split(' ')[1],
         }
       })
-    })
+    }).value()
 
-    return {
+    const game = {
       id: id,
       draws: draws,
     }
+    return game
   }
 
   part1(input: string[]) {
@@ -35,7 +36,7 @@ class Day1 extends Task {
       blue: 14,
     }
 
-    return input
+    return _.chain(input)
       .map(i => this.parseGame(i))
       .filter(game => {
         return game.draws
@@ -50,20 +51,21 @@ class Day1 extends Task {
       })
       .map(g => g.id)
       .sum()
+      .value()
   }
 
   parseGameTry2(line: string) {
     const split = line.split(': ')
 
-    const id = +split.head().split(' ')[1]
-    const draws = split.last().split('; ').map(draw => {
+    const id = +_.chain(split).head().split(' ').last().value()
+    const draws = _.chain(split).last().split('; ').map(draw => {
       return new Hand(draw.split(', ').map(numberAndColor => {
         return new NumberAndColor(
           +numberAndColor.split(' ')[0],
           numberAndColor.split(' ')[1],
         )
       }))
-    })
+    }).value()
 
     return new Game(id, draws)
   }
@@ -75,18 +77,20 @@ class Day1 extends Task {
       blue: 14,
     }
 
-    return input
+    return _.chain(input)
       .map(i => this.parseGameTry2(i))
       .filter(game => game.isValid(maxCubes))
       .map(g => g.id)
       .sum()
+      .value()
   }
 
   part2(input: string[]) {
-    return input
+    return _.chain(input)
       .map(i => this.parseGameTry2(i))
       .map(g => g.calculatePower())
       .sum()
+      .value()
   }
 }
 
