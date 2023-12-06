@@ -22,11 +22,10 @@ class Day1 extends Task {
       })
     }).value()
 
-    const game = {
+    return {
       id: id,
       draws: draws,
     }
-    return game
   }
 
   part1(input: string[]) {
