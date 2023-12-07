@@ -3,10 +3,12 @@ import { readFileSync } from 'fs'
 export class Task {
   day: number
   year: number
+  splitInputBy: string
 
-  constructor(day: number, year: number) {
+  constructor(day: number, year: number, splitInputBy: string = '\n') {
     this.day = day
     this.year = year
+    this.splitInputBy = splitInputBy
   }
 
   getExample(specifier?: number) {
@@ -23,6 +25,6 @@ export class Task {
 
   private get(specifier: string) {
     const filePath = `src/test/year${this.year}/resources/day${this.day}_${specifier}.txt`
-    return readFileSync(filePath, 'utf-8').split('\n')
+    return readFileSync(filePath, 'utf-8').split(this.splitInputBy)
   }
 }
