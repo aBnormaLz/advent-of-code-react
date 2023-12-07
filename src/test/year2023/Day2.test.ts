@@ -4,7 +4,7 @@ import { NumberAndColor } from './day2/NumberAndColor'
 import { Game } from './day2/Game'
 import * as _ from 'lodash'
 
-class Day1 extends Task {
+export class Day2 extends Task {
   constructor() {
     super(2, 2023)
   }
@@ -94,27 +94,27 @@ class Day1 extends Task {
 }
 
 test('Part 1 example', () => {
-  const day = new Day1()
+  const day = new Day2()
   const input = day.getExample()
   expect(day.part1(input)).toBe(8)
   expect(day.part1Try2(input)).toBe(8)
 })
 
 test('Part 1 task', () => {
-  const day = new Day1()
+  const day = new Day2()
   const input = day.getTask()
   expect(day.part1(input)).toBe(2369)
   expect(day.part1Try2(input)).toBe(2369)
 })
 
 test('Part 2 example', () => {
-  const day = new Day1()
+  const day = new Day2()
   const input = day.getExample()
   expect(day.part2(input)).toBe(2286)
 })
 
 test('Part 2 task', () => {
-  const day = new Day1()
+  const day = new Day2()
   const input = day.getTask()
   expect(day.part2(input)).toBe(66363)
 })

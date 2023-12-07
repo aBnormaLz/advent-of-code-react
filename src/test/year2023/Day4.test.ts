@@ -1,7 +1,7 @@
 import { Task } from '../util/Task'
 import * as _ from 'lodash'
 
-class Day1 extends Task {
+class Day4 extends Task {
   constructor() {
     super(4, 2023)
   }
@@ -49,25 +49,25 @@ class Day1 extends Task {
 }
 
 test('Part 1 example', () => {
-  const day = new Day1()
+  const day = new Day4()
   const input = day.getExample()
   expect(day.part1(input)).toBe(13)
 })
 
 test('Part 1 task', () => {
-  const day = new Day1()
+  const day = new Day4()
   const input = day.getTask()
   expect(day.part1(input)).toBe(28538)
 })
 
 test('Part 2 example', () => {
-  const day = new Day1()
+  const day = new Day4()
   const input = day.getExample()
   expect(day.part2(input)).toBe(30)
 })
 
 test('Part 2 task', () => {
-  const day = new Day1()
+  const day = new Day4()
   const input = day.getTask()
   expect(day.part2(input)).toBe(9425061)
 })
