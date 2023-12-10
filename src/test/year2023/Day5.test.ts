@@ -1,6 +1,5 @@
 import { Task } from '../util/Task'
 import * as _ from 'lodash'
-import '../util/SlidingAugment'
 import { sliding } from '../util/SlidingAugment'
 
 type Mapping = { name: any; rules: { length: number; source: number; dest: number }[] }

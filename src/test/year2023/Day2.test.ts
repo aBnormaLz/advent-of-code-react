@@ -4,7 +4,7 @@ import { NumberAndColor } from './day2/NumberAndColor'
 import { Game } from './day2/Game'
 import * as _ from 'lodash'
 
-export class Day2 extends Task {
+class Day2 extends Task {
   constructor() {
     super(2, 2023)
   }

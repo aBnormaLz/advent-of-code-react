@@ -1,6 +1,5 @@
 import { Task } from '../util/Task'
 import * as _ from 'lodash'
-import '../util/SlidingAugment'
 
 class Day6 extends Task {
   constructor() {
