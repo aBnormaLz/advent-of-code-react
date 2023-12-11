@@ -1,4 +1,4 @@
-import { Coord } from '../../util/Coord'
+import { Position } from '../../util/Position'
 import { AssertUtil } from '../../util/AssertUtil'
 import { Field } from './Field'
 import * as _ from 'lodash'
@@ -11,8 +11,8 @@ export class Map {
     this.inner = lines.map((l, x) => {
       return l.split('').map((c, y) => new Field(c, x, y))
     })
-    const startFiltered: Field[] = this.inner.flatMap((l, x) => {
-      return l.map((f, y) => {
+    const startFiltered: Field[] = this.inner.flatMap(row => {
+      return row.map(f => {
         if (f.pipe === 'S') {
           return f
         } else {
@@ -36,24 +36,24 @@ export class Map {
     ].filter(f => f && !f.visited)
   }
 
-  upNeighbour(pos: Coord) {
-    return this.neighbour(pos, new Coord({ x: -1, y: 0 }), ['|', '7', 'F'])
+  upNeighbour(pos: Position) {
+    return this.neighbour(pos, new Position({ x: -1, y: 0 }), ['|', '7', 'F'])
   }
 
 
-  downNeighbour(pos: Coord) {
-    return this.neighbour(pos, new Coord({ x: 1, y: 0 }), ['|', 'L', 'J'])
+  downNeighbour(pos: Position) {
+    return this.neighbour(pos, new Position({ x: 1, y: 0 }), ['|', 'L', 'J'])
   }
 
-  leftNeighbour(pos: Coord) {
-    return this.neighbour(pos, new Coord({ x: 0, y: -1 }), ['-', 'L', 'F'])
+  leftNeighbour(pos: Position) {
+    return this.neighbour(pos, new Position({ x: 0, y: -1 }), ['-', 'L', 'F'])
   }
 
-  rightNeighbour(pos: Coord) {
-    return this.neighbour(pos, new Coord({ x: 0, y: 1 }), ['-', 'J', '7'])
+  rightNeighbour(pos: Position) {
+    return this.neighbour(pos, new Position({ x: 0, y: 1 }), ['-', 'J', '7'])
   }
 
-  neighbour(pos: Coord, move: Coord, allowedChars: string[]) {
+  neighbour(pos: Position, move: Position, allowedChars: string[]) {
     const x = pos.x + move.x
     const y = pos.y + move.y
 
