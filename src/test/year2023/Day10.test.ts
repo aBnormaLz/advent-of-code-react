@@ -23,6 +23,16 @@ class Day10 extends Task {
   }
 
   part2(input: string[]) {
+    const pipeMap = new PipeMap(input)
+    pipeMap.print()
+    pipeMap.eliminateNonLoopPipes()
+    pipeMap.replaceStart()
+    pipeMap.print()
+    const zoomed = pipeMap.zoom()
+    zoomed.print()
+    zoomed.eliminateOuterFields()
+    zoomed.print()
+    return zoomed.countX()
   }
 }
 
@@ -40,14 +50,18 @@ test('Part 1 task', () => {
   expect(day.part1(input)).toBe(6773)
 })
 
-// test('Part 2 example', () => {
-//   const day = new Day10()
-//   const input = day.getExample()
-//   expect(day.part2(input)).toBe(2)
-// })
-//
-// test('Part 2 task', () => {
-//   const day = new Day10()
-//   const input = day.getTask()
-//   expect(day.part2(input)).toBe(977)
-// })
+test('Part 2 example', () => {
+  const day = new Day10()
+  const input3 = day.getExample(3)
+  expect(day.part2(input3)).toBe(4)
+  const input4 = day.getExample(4)
+  expect(day.part2(input4)).toBe(8)
+  const input5 = day.getExample(5)
+  expect(day.part2(input5)).toBe(10)
+})
+
+test('Part 2 task', () => {
+  const day = new Day10()
+  const input = day.getTask()
+  expect(day.part2(input)).toBe(493)
+})
