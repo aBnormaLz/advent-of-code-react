@@ -1,15 +1,13 @@
-import { Position } from '../../util/Position'
+import { Position } from './Position'
 
 export class Field {
   pos: Position
-  pipe: string
   visited: boolean
-  distance: number
+  char: string
 
   constructor(c: string, x: number, y: number) {
-    this.pipe = c
+    this.char = c
     this.pos = new Position({ x, y })
     this.visited = false
-    this.distance = -1
   }
 }

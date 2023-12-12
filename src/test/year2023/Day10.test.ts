@@ -1,5 +1,5 @@
 import { Task } from '../util/Task'
-import { Map } from './day10/Map'
+import { PipeMap } from './day10/PipeMap'
 
 class Day10 extends Task {
   constructor() {
@@ -7,7 +7,7 @@ class Day10 extends Task {
   }
 
   part1(input: string[]) {
-    const map = new Map(input)
+    const map = new PipeMap(input)
     let fieldsToVisit = [map.start]
 
     while (fieldsToVisit.length > 0) {
