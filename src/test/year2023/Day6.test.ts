@@ -32,17 +32,20 @@ class Day6 extends Task {
       })
       .map(timeAndDistance => this.calculateWinningCases(timeAndDistance.raceTime, timeAndDistance.distance))
       .map(c => c.length)
-      .value().reduce((acc, curr) => acc * curr)
+      .reduce((acc, curr) => acc * curr)
+      .value()
   }
 
   parseRaceTimeAndMinDistance(input: string[]) {
     const raceTime = +_.chain(input[0].split(' ')
       .filter(m => m.length > 0))
-      .tail().reduce((acc, curr) => acc + curr)
+      .tail()
+      .sum()
       .value()
     const minDistance = +_.chain(input[1].split(' ')
       .filter(m => m.length > 0))
-      .tail().reduce((acc, curr) => acc + curr)
+      .tail()
+      .sum()
       .value()
     return { raceTime, minDistance }
   }
